@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bilk2yeqdcpg4"]
+
+[ext_resource type="PackedScene" uid="uid://df5i7hgsvw4dp" path="res://obstacles/GoundSocket/Gound_Socket_06.glb" id="1_y7gwp"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="2_friwu"]
+[ext_resource type="Script" path="res://follow_path.gd" id="2_oleo2"]
+[ext_resource type="PackedScene" uid="uid://da0rkiykpmwum" path="res://obstacles/PoleSpike/pole_spike_01.tscn" id="4_elcv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acqjq"]
+albedo_texture = ExtResource("2_friwu")
+
+[sub_resource type="Curve3D" id="Curve3D_i0kqk"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.000998408, 0, -0.939925, 0, 0, 0, 0, 0, 0, 0.672768, 0, -0.923406, 0.00722015, 0.0382426, -0.797742, -0.00722015, -0.0382426, 0.797742, 1.51523, 0, -0.00385275, 0, 0, 0, 0, 0, 0, 0.755363, 0, 0.893676, 0, 0, 0, 0, 0, 0, 0.000998408, 0, 0.915701, 0, 0, 0, 0, 0, 0, -0.637734, 0, 0.904688, -0.0649408, -0.0747371, 0.851931, 0.0649408, 0.0747371, -0.851931, -1.49121, 0, -0.0148655, 0, 0, 0, 0, 0, 0, -0.665265, 0, -0.939925, 0, 0, 0, 0, 0, 0, 0.000998408, 0, -0.939925),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="Ground_Socket_06" instance=ExtResource("1_y7gwp")]
+script = ExtResource("2_oleo2")
+
+[node name="Gound_Socket_06_v02" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_acqjq")
+
+[node name="Path3D" type="Path3D" parent="." index="1"]
+curve = SubResource("Curve3D_i0kqk")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" index="0"]
+transform = Transform3D(-0.0245829, 0, -0.999698, 0, 1, 0, 0.999698, 0, -0.0245829, 0.000998408, 0, -0.939925)
+
+[node name="Pole_Spike_01" parent="Path3D/PathFollow3D" index="0" instance=ExtResource("4_elcv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)

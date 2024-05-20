@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7che7wlsfsjr"]
+
+[ext_resource type="PackedScene" uid="uid://c4xei6618knke" path="res://obstacles/WideCrasher/Wide_Crasher_01.glb" id="1_2y07c"]
+[ext_resource type="Script" path="res://wide_crasher.gd" id="2_kysha"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="2_u3btc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ibcj"]
+albedo_texture = ExtResource("2_u3btc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bda1y"]
+albedo_texture = ExtResource("2_u3btc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3x2fw"]
+size = Vector3(3.5, 0.3, 0.3)
+
+[node name="Wide_Crasher" instance=ExtResource("1_2y07c")]
+script = ExtResource("2_kysha")
+
+[node name="Wide_Crasher_01" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_6ibcj")
+
+[node name="Wide_Crasher_01_Holder" parent="Wide_Crasher_01" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, 2.73289, 0)
+material_override = SubResource("StandardMaterial3D_bda1y")
+
+[node name="Area3D" type="Area3D" parent="Wide_Crasher_01/Wide_Crasher_01_Holder" index="0"]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wide_Crasher_01/Wide_Crasher_01_Holder/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_3x2fw")

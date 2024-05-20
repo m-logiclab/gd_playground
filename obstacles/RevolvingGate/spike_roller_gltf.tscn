@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://k2nx3461q1qa"]
+
+[ext_resource type="PackedScene" uid="uid://cufckuoim7bng" path="res://mapParts/spikeRoller.gltf.glb" id="1_fxjld"]
+[ext_resource type="Script" path="res://rotator.gd" id="2_5fd7f"]
+
+[node name="spikeRoller_gltf" instance=ExtResource("1_fxjld")]
+script = ExtResource("2_5fd7f")

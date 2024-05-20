@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://bflkuwjlv35ps"]
+
+[ext_resource type="PackedScene" uid="uid://btkem5jjs7l0f" path="res://obstacles/RevolvingGate/Revolving_Gate_02.glb" id="1_fd5i0"]
+[ext_resource type="Script" path="res://rotator.gd" id="2_g07ey"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="3_yj813"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kdyx"]
+albedo_texture = ExtResource("3_yj813")
+
+[node name="Revolving_Gate_02" instance=ExtResource("1_fd5i0")]
+script = ExtResource("2_g07ey")
+
+[node name="Revolving_Gate_02" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_3kdyx")

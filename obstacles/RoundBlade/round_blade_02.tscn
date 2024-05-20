@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4fe3dhh0i3jl"]
+
+[ext_resource type="PackedScene" uid="uid://c0686yb1h5jcr" path="res://obstacles/RoundBlade/Round_Blade_02.glb" id="1_2vnp0"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="2_2m62b"]
+[ext_resource type="Script" path="res://rotator.gd" id="2_n5b0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px0wa"]
+albedo_texture = ExtResource("2_2m62b")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qrbbb"]
+height = 0.1
+radius = 0.25
+
+[node name="Round_Blade_02" instance=ExtResource("1_2vnp0")]
+script = ExtResource("2_n5b0b")
+
+[node name="Round_Blade_02" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_px0wa")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("CylinderShape3D_qrbbb")

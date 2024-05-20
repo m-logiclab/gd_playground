@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyse8wurfgk56"]
+
+[ext_resource type="PackedScene" uid="uid://bf7gr15qevgw2" path="res://obstacles/SpinningBlade/Spinning_Blade_01.glb" id="1_iriuj"]
+[ext_resource type="Script" path="res://rotator.gd" id="2_mkb8b"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="2_yembq"]
+[ext_resource type="PackedScene" uid="uid://b4fe3dhh0i3jl" path="res://obstacles/RoundBlade/round_blade_02.tscn" id="4_ocavg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dd25b"]
+albedo_texture = ExtResource("2_yembq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fdq7"]
+albedo_texture = ExtResource("2_yembq")
+
+[node name="Spinning_Blade_01" instance=ExtResource("1_iriuj")]
+script = ExtResource("2_mkb8b")
+
+[node name="Spinning_Blade_01" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_dd25b")
+
+[node name="Blade_Holder" parent="Spinning_Blade_01" index="0"]
+material_override = SubResource("StandardMaterial3D_3fdq7")
+
+[node name="Round_Blade_02" parent="Spinning_Blade_01/Blade_Holder" index="0" instance=ExtResource("4_ocavg")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -1.25, 0.76, 0)

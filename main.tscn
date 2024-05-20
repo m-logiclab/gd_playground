@@ -1,0 +1,207 @@
+[gd_scene load_steps=31 format=3 uid="uid://cpcbvumjd1a6c"]
+
+[ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://models/sophia/sophia_skin.tscn" id="1_gqbpn"]
+[ext_resource type="Script" path="res://Player.gd" id="2_b5ncd"]
+[ext_resource type="PackedScene" uid="uid://edsqwsvuauy" path="res://mapParts/tileLarge_forest.gltf.glb" id="2_ni1tg"]
+[ext_resource type="PackedScene" uid="uid://bwjskpesl7ebk" path="res://obstacles/RevolvingGate/revolving_gate_01.tscn" id="4_1odag"]
+[ext_resource type="PackedScene" uid="uid://bflkuwjlv35ps" path="res://obstacles/RevolvingGate/revolving_gate_02.tscn" id="5_kbdkt"]
+[ext_resource type="PackedScene" uid="uid://lkbxfrae7pks" path="res://obstacles/RevolvingGate/swiper_team_red_gltf.tscn" id="6_jx376"]
+[ext_resource type="PackedScene" uid="uid://k2nx3461q1qa" path="res://obstacles/RevolvingGate/spike_roller_gltf.tscn" id="7_wgqii"]
+[ext_resource type="PackedScene" uid="uid://dy31w23iakh0" path="res://obstacles/GroundSpike/ground_spike_02.tscn" id="8_tco4b"]
+[ext_resource type="PackedScene" uid="uid://dyse8wurfgk56" path="res://obstacles/SpinningBlade/spinning_blade_01.tscn" id="9_ra6j0"]
+[ext_resource type="PackedScene" uid="uid://b0svesjvy3e0n" path="res://obstacles/HangingHamme/hanging_hammer_05.tscn" id="10_mrj6u"]
+[ext_resource type="PackedScene" uid="uid://bilk2yeqdcpg4" path="res://obstacles/GoundSocket/ground_socket_06.tscn" id="11_vg8ei"]
+[ext_resource type="PackedScene" uid="uid://b7che7wlsfsjr" path="res://obstacles/WideCrasher/wide_crasher.tscn" id="12_p3dgm"]
+[ext_resource type="PackedScene" uid="uid://cyc1j7sst2xgf" path="res://mapParts/tileLow_forest.gltf.glb" id="13_tmuga"]
+[ext_resource type="PackedScene" uid="uid://cfkwd8m85gpfv" path="res://mapParts/tileMedium_forest.gltf.glb" id="14_ris57"]
+[ext_resource type="PackedScene" uid="uid://bs6s2egochbp0" path="res://mapParts/tileHigh_forest.gltf.glb" id="15_kbsay"]
+[ext_resource type="PackedScene" uid="uid://bir7dsljkg6v8" path="res://obstacles/GoundBlower/ground_blower.tscn" id="16_mr00x"]
+[ext_resource type="PackedScene" uid="uid://dsp57gsrl2vah" path="res://obstacles/Pusher/pusher.tscn" id="17_od3r7"]
+[ext_resource type="PackedScene" uid="uid://n62ix0mcbyu0" path="res://obstacles/FireTrap/fire_trap.tscn" id="18_85fwd"]
+[ext_resource type="FontFile" uid="uid://b58hjm4ncaol8" path="res://font/ラノベPOP.otf" id="19_w12yu"]
+[ext_resource type="Script" path="res://UI.gd" id="20_7xoi5"]
+[ext_resource type="Texture2D" uid="uid://8jfrt64omys1" path="res://texture/jem.png" id="20_ubycj"]
+[ext_resource type="PackedScene" uid="uid://bn1kwfx88s0lu" path="res://mapParts/diamond_yellow.tscn" id="21_x0xar"]
+[ext_resource type="PackedScene" uid="uid://b2cn83b5v2v1o" path="res://move_tile.tscn" id="23_udav5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6o4t"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0ney2"]
+sky_material = SubResource("ProceduralSkyMaterial_e6o4t")
+
+[sub_resource type="Environment" id="Environment_kbqvg"]
+background_mode = 2
+sky = SubResource("Sky_0ney2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2b00i"]
+height = 1.7
+
+[sub_resource type="Theme" id="Theme_po4vm"]
+default_font = ExtResource("19_w12yu")
+default_font_size = 20
+
+[sub_resource type="FontVariation" id="FontVariation_nekee"]
+base_font = ExtResource("19_w12yu")
+spacing_glyph = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ppbn"]
+font = SubResource("FontVariation_nekee")
+font_size = 50
+font_color = Color(1, 1, 0, 1)
+outline_size = 10
+outline_color = Color(0.184314, 0.0941176, 0.0156863, 1)
+shadow_size = 20
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kbqvg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -0.219509, 0, -7.07705)
+shadow_enabled = true
+
+[node name="tileLarge_forest_gltf" parent="." instance=ExtResource("2_ni1tg")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, -1, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("2_b5ncd")
+
+[node name="SophiaSkin" parent="Player" instance=ExtResource("1_gqbpn")]
+transform = Transform3D(-0.978289, 0, -0.207246, 0, 1, 0, 0.207246, 0, -0.978289, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_2b00i")
+
+[node name="Area3D" type="Area3D" parent="Player"]
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_2b00i")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 0)
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0693504, 4.12252)
+current = true
+
+[node name="Stage1" type="Node3D" parent="."]
+
+[node name="Revolving_Gate_01" parent="Stage1" instance=ExtResource("4_1odag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80113, -2.38419e-07, -12.9991)
+
+[node name="Revolving_Gate_02" parent="Stage1" instance=ExtResource("4_1odag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7533, -4.76837e-07, -13.2238)
+rotate_speed = -5.0
+
+[node name="Revolving_Gate_03" parent="Stage1" instance=ExtResource("5_kbdkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32008, -4.76837e-07, -12.9782)
+
+[node name="swiper_teamRed_gltf" parent="Stage1" instance=ExtResource("6_jx376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2856, -4.76837e-07, -10.399)
+
+[node name="spikeRoller_gltf" parent="Stage1" instance=ExtResource("7_wgqii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.28557, -4.76837e-07, -8.76507)
+
+[node name="Ground_Spike_02" parent="Stage1" instance=ExtResource("8_tco4b")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.57406, 0, -4.74079)
+
+[node name="Spinning_Blade_01" parent="Stage1" instance=ExtResource("9_ra6j0")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.74962, 0, -2.239)
+
+[node name="Hanging_Hammer_05" parent="Stage1" instance=ExtResource("10_mrj6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13569, 4, 0.591535)
+
+[node name="Ground_Socket_06" parent="Stage1" instance=ExtResource("11_vg8ei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39631, 1.90735e-06, 0.0853345)
+speed = -2.0
+
+[node name="Wide_Crasher" parent="Stage1" instance=ExtResource("12_p3dgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102383, -4.76837e-07, -12.8874)
+
+[node name="tileLow_forest_gltf" parent="Stage1" instance=ExtResource("13_tmuga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0197514, 0, -9.83962)
+
+[node name="tileMedium_forest_gltf" parent="Stage1" instance=ExtResource("14_ris57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16527, 0, -9.8551)
+
+[node name="tileHigh_forest_gltf" parent="Stage1" instance=ExtResource("15_kbsay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31172, 0, -9.89436)
+
+[node name="tileHigh_forest_gltf2" parent="Stage1" instance=ExtResource("15_kbsay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38014, 0, -9.89436)
+
+[node name="tileLow_forest_gltf2" parent="Stage1" instance=ExtResource("13_tmuga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43849, 2.02, -9.89405)
+
+[node name="Ground_Blower" parent="Stage1" instance=ExtResource("16_mr00x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23719, -9.53674e-07, -7.19428)
+
+[node name="Pusher" parent="Stage1" instance=ExtResource("17_od3r7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.00331, 0, -5.44417)
+
+[node name="Fire_Trap" parent="Stage1" instance=ExtResource("18_85fwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92833, 0, -2.51215)
+
+[node name="diamond_Yellow" parent="Stage1" instance=ExtResource("21_x0xar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -3)
+
+[node name="diamond_Yellow2" parent="Stage1" instance=ExtResource("21_x0xar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_po4vm")
+script = ExtResource("20_7xoi5")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 102.0
+offset_bottom = 102.0
+texture = ExtResource("20_ubycj")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 30.0
+offset_right = 370.0
+offset_bottom = 80.0
+text = "100"
+label_settings = SubResource("LabelSettings_4ppbn")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 30.0
+offset_right = -32.0
+offset_bottom = 80.0
+grow_horizontal = 0
+focus_mode = 0
+text = "リセット"
+
+[node name="move_tile" parent="." instance=ExtResource("23_udav5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23294, 0, -16.7242)
+
+[connection signal="update_gem" from="Player" to="Control" method="_on_player_update_gem"]
+[connection signal="area_entered" from="Player/Area3D" to="Player" method="_on_area_3d_area_entered"]
+[connection signal="pressed" from="Control/Button" to="Player" method="hit_and_restart"]

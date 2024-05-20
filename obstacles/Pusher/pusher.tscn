@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsp57gsrl2vah"]
+
+[ext_resource type="PackedScene" uid="uid://btavih0vptcn5" path="res://obstacles/Pusher/Pusher_01.glb" id="1_qhtku"]
+[ext_resource type="Texture2D" uid="uid://deaxa2elygh24" path="res://texture/Obstacles_Color_Palette_01.png" id="2_canja"]
+[ext_resource type="Script" path="res://pusher.gd" id="2_kjjn3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly42w"]
+albedo_texture = ExtResource("2_canja")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js03q"]
+albedo_texture = ExtResource("2_canja")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icw1b"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="Animation" id="Animation_kysqs"]
+resource_name = "push"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pusher_01/Pusher_01_Head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.0267487, 0.553736, 0.421295, 2, 1, 0.027, 0.554, -0.05, 2.2, 1, 0.0267487, 0.553736, 0.421295)
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"push"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24i5y"]
+_data = {
+"push": SubResource("Animation_kysqs")
+}
+
+[node name="Pusher" instance=ExtResource("1_qhtku")]
+script = ExtResource("2_kjjn3")
+
+[node name="Pusher_01" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ly42w")
+
+[node name="Pusher_01_Head" parent="Pusher_01" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.813195, 0, 0, 0, 0.813195, 0.027, 0.554, -0.0499999)
+material_override = SubResource("StandardMaterial3D_js03q")
+
+[node name="Area3D" type="Area3D" parent="Pusher_01/Pusher_01_Head" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pusher_01/Pusher_01_Head/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
+shape = SubResource("BoxShape3D_icw1b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_24i5y")
+}
+autoplay = "push"

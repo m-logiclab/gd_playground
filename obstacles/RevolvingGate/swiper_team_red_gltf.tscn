@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://lkbxfrae7pks"]
+
+[ext_resource type="PackedScene" uid="uid://b0r5rt6w4a7ec" path="res://mapParts/swiper_teamRed.gltf.glb" id="1_av7h3"]
+[ext_resource type="Script" path="res://rotator.gd" id="2_0rj5w"]
+
+[node name="swiper_teamRed_gltf" instance=ExtResource("1_av7h3")]
+script = ExtResource("2_0rj5w")
